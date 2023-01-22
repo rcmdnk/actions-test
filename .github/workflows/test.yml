@@ -30,6 +30,11 @@ on:
         description: 'enviroment variable'
         required: false
         default: dev
+      number_var:
+        type: number
+        description: 'number variable'
+        required: false
+        default: 1
 
 jobs:
   test:
