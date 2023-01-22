@@ -30,7 +30,7 @@ on:
         type: environment
         description: 'enviroment variable'
         required: false
-        default: hoge
+        default: prod
       number_var:
         type: number
         description: 'number variable'
