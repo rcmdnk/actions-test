@@ -38,7 +38,7 @@ jobs:
     environment: ${{ inputs.environment }}
     steps:
       - name: inputs check
-        run: echo "string_var=${{ inputs.string_var }}, choice_var=${{ inputs.choice_var }}, boolean_var=${{ inputs.boolean_var }}, environment_var=${{ environment_var }}"
+        run: echo "string_var=${{ inputs.string_var }}, choice_var=${{ inputs.choice_var }}, boolean_var=${{ inputs.boolean_var }}, environment_var=${{ inputs.environment_var }}"
       - name: boolean test
         if: ${{ inputs.boolean_var }}
         run: echo "boolean_var is true"
