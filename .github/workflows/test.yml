@@ -35,6 +35,11 @@ on:
         description: 'number variable'
         required: false
         default: 1
+      test_type_var:
+        type: test_type
+        description: 'test_type variable'
+        required: false
+        default: abc
 
 jobs:
   test:
@@ -42,7 +47,7 @@ jobs:
     environment: ${{ inputs.environment_var }}
     steps:
       - name: inputs check
-        run: echo "string_var=${{ inputs.string_var }}, choice_var=${{ inputs.choice_var }}, boolean_var=${{ inputs.boolean_var }}, environment_var=${{ inputs.environment_var }}, number_var=${{ inputs.number_var }}"
+        run: echo "string_var=${{ inputs.string_var }}, choice_var=${{ inputs.choice_var }}, boolean_var=${{ inputs.boolean_var }}, environment_var=${{ inputs.environment_var }}, number_var=${{ inputs.number_var }}, test_typee_var=${{ inputs.test_type_var }}"
       - name: boolean test
         if: ${{ inputs.boolean_var }}
         run: echo "boolean_var is true"
