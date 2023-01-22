@@ -11,10 +11,12 @@ on:
         type: string
         description: 'string variable'
         required: false
+        default: 'default string'
       choice_var:
         type: choice
         description: 'choice variable'
         required: false
+        default: 'b'
         options:
           - 'a'
           - 'b'
@@ -23,18 +25,22 @@ on:
         type: boolean
         description: 'boolean variable'
         required: false
+        default: false
       environment_var:
         type: environment
         description: 'enviroment variable'
         required: false
+        default: hoge
       number_var:
         type: number
         description: 'number variable'
         required: false
+        default: 1
       test_type_var:
         type: test_type
         description: 'test_type variable'
         required: false
+        default: abc
 
 jobs:
   test:
