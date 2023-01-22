@@ -16,7 +16,6 @@ on:
         type: choice
         description: 'choice variable'
         required: false
-        default: 'a'
         options:
           - 'a'
           - 'b'
@@ -35,7 +34,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.environment_var }}
     steps:
       - name: inputs check
         run: echo "string_var=${{ inputs.string_var }}, choice_var=${{ inputs.choice_var }}, boolean_var=${{ inputs.boolean_var }}, environment_var=${{ inputs.environment_var }}"
