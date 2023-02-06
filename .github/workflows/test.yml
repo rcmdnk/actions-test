@@ -43,12 +43,12 @@ on:
         default: abc
 
 env:
-  string_var: ${{ inputs.string_var || 'default string' }}
-  choice_var: ${{ inputs.choice_var || 'b' }}
+  string_var: ${{ inputs.string_var || default string }}
+  choice_var: ${{ inputs.choice_var || b }}
   boolean_var: ${{ inputs.boolean_var || false }}
-  environment_var: ${{ inputs.environment_var || 'prod' }}
+  environment_var: ${{ inputs.environment_var || prod }}
   number_var: ${{ inputs.number_var || 1 }}
-  test_type_var: ${{ inputs.test_type_var || 'abc' }}
+  test_type_var: ${{ inputs.test_type_var || abc }}
 
 jobs:
   test:
@@ -65,13 +65,9 @@ jobs:
       - name: string test
         if: ${{ inputs.string_var }}
         run: echo "string_var is true"
-      - name: environment test
-        run: echo "TEST_VAR=${{ vars.TEST_VAR }}"
       - name: boolean test
         if: ${{ env.boolean_var }}
         run: echo "boolean_var is true"
       - name: string test
         if: ${{ env.string_var }}
         run: echo "string_var is true"
-      - name: environment test
-        run: echo "TEST_VAR=${{ env.TEST_VAR }}"
