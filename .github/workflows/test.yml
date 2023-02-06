@@ -43,12 +43,12 @@ on:
         default: abc
 
 env:
-  string_var: ${{ inputs.string_var || default string }}
-  choice_var: ${{ inputs.choice_var || b }}
+  string_var: ${{ inputs.string_var || 'default string' }}
+  choice_var: ${{ inputs.choice_var || 'b' }}
   boolean_var: ${{ inputs.boolean_var || false }}
-  environment_var: ${{ inputs.environment_var || prod }}
+  environment_var: ${{ inputs.environment_var || 'prod' }}
   number_var: ${{ inputs.number_var || 1 }}
-  test_type_var: ${{ inputs.test_type_var || abc }}
+  test_type_var: ${{ inputs.test_type_var || 'abc' }}
 
 jobs:
   test:
