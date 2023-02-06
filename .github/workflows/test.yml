@@ -67,3 +67,11 @@ jobs:
         run: echo "string_var is true"
       - name: environment test
         run: echo "TEST_VAR=${{ vars.TEST_VAR }}"
+      - name: boolean test
+        if: ${{ env.boolean_var }}
+        run: echo "boolean_var is true"
+      - name: string test
+        if: ${{ env.string_var }}
+        run: echo "string_var is true"
+      - name: environment test
+        run: echo "TEST_VAR=${{ env.TEST_VAR }}"
