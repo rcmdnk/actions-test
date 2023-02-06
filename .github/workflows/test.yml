@@ -41,6 +41,7 @@ on:
         description: 'test_type variable'
         required: false
         default: abc
+
 env:
   string_var: ${{ inputs.string_var || "default string" }}
   choice_var: ${{ inputs.choice_var || "b" }}
@@ -48,7 +49,6 @@ env:
   environment_var: ${{ inputs.environment_var || "prod" }}
   number_var: ${{ inputs.number_var || 1 }}
   test_type_var: ${{ inputs.test_type_var || "abc" }}
-
 
 jobs:
   test:
