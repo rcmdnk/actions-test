@@ -41,6 +41,14 @@ on:
         description: 'test_type variable'
         required: false
         default: abc
+env:
+  string_var: ${{ inputs.string_var || "default string" }}
+  choice_var: ${{ inputs.choice_var || "b" }}
+  boolean_var: ${{ inputs.boolean_var || false }}
+  environment_var: ${{ inputs.environment_var || "prod" }}
+  number_var: ${{ inputs.number_var || 1 }}
+  test_type_var: ${{ inputs.test_type_var || "abc" }}
+
 
 jobs:
   test:
@@ -49,6 +57,8 @@ jobs:
     steps:
       - name: inputs check
         run: echo "string_var=${{ inputs.string_var }}, choice_var=${{ inputs.choice_var }}, boolean_var=${{ inputs.boolean_var }}, environment_var=${{ inputs.environment_var }}, number_var=${{ inputs.number_var }}, test_type_var=${{ inputs.test_type_var }}"
+      - name: env check
+        run: echo "string_var=${{ env.string_var }}, choice_var=${{ env.choice_var }}, boolean_var=${{ env.boolean_var }}, environment_var=${{ env.environment_var }}, number_var=${{ env.number_var }}, test_type_var=${{ env.test_type_var }}"
       - name: boolean test
         if: ${{ inputs.boolean_var }}
         run: echo "boolean_var is true"
