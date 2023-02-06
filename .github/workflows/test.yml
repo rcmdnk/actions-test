@@ -1,13 +1,5 @@
 name: test
 
-env:
-  string_var: 'default string'
-  choice_var: 'b'
-  boolean_var: false
-  environment_var: 'prod'
-  number_var: 1
-  test_type_var: 'abc'
-
 on:
   push:
     branches-ignore:
@@ -19,12 +11,12 @@ on:
         type: string
         description: 'string variable'
         required: false
-        default: ${{ env.string_var }}
+        default: 'default string'
       choice_var:
         type: choice
         description: 'choice variable'
         required: false
-        default: ${{ env.choice_var }}
+        default: 'b'
         options:
           - 'a'
           - 'b'
@@ -33,23 +25,30 @@ on:
         type: boolean
         description: 'boolean variable'
         required: false
-        default: ${{ env.boolean_var }}
+        default: false
       environment_var:
         type: environment
         description: 'enviroment variable'
         required: false
-        default: ${{ env.environment_var }}
+        default: prod
       number_var:
         type: number
         description: 'number variable'
         required: false
-        default: ${{ env.number_bar }}
+        default: 1
       test_type_var:
         type: test_type
         description: 'test_type variable'
         required: false
-        default: ${{ env.test_type_var }}
+        default: abc
 
+env:
+  string_var: ${{ inputs.string_var || 'default string' }}
+  choice_var: ${{ inputs.choice_var || 'b' }}
+  boolean_var: ${{ inputs.boolean_var || false }}
+  environment_var: ${{ inputs.environment_var || 'prod' }}
+  number_var: ${{ inputs.number_var || 1 }}
+  test_type_var: ${{ inputs.test_type_var || 'abc' }}
 
 jobs:
   test:
