@@ -66,7 +66,7 @@ jobs:
         if: ${{ inputs.string_var }}
         run: echo "string_var is true"
       - name: boolean test
-        if: ${{ env.boolean_var }}
+        if: ${{ env.boolean_var == 'true' }}
         run: echo "boolean_var is true"
       - name: string test
         if: ${{ env.string_var }}
