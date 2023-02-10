@@ -1,4 +1,4 @@
-name: test
+name: variable_check
 
 on:
   push:
@@ -51,7 +51,7 @@ env:
   test_type_var: ${{ inputs.test_type_var || 'abc' }}
 
 jobs:
-  test:
+  variable_check:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment_var }}
     steps:

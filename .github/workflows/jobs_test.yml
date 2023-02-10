@@ -1,0 +1,38 @@
+name: jobs_test
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      boolean_var:
+        type: boolean
+        description: 'boolean variable'
+        required: false
+        default: true
+
+env:
+  boolean_var: ${{ inputs.boolean_var || false }}
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    outputs:
+      flag: ${{ steps.check.outputs.flag }}
+    steps:
+      - name: inputs check
+        id: check
+        run: |
+          if [ "${{ env.boolean_var }}" = "true" ];then
+            echo "flag=1" | tee -a $GITHUB_OUTPUT
+          else
+            echo "flag=0" | tee -a $GITHUB_OUTPUT
+          fi
+
+  second_job:
+    runs-on: ubuntu-latest
+    if: ${{ needs.first_job.outputs.flag == 1 }}
+    needs: first_job
+    steps:
+      - name: run second
+        run: |
+          echo "This is a second run."
