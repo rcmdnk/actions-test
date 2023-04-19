@@ -2,8 +2,6 @@ name: jobs_test
 
 on:
   push:
-    branches:
-      "*"
   workflow_dispatch:
     inputs:
       boolean_var:
